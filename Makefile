@@ -6,7 +6,7 @@
 #    By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/07 10:28:33 by aperez-b          #+#    #+#              #
-#    Updated: 2021/07/13 14:24:48 by aperez-b         ###   ########.fr        #
+#    Updated: 2021/07/13 14:29:21 by aperez-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,7 +82,7 @@ $(NAME) : $(OBJ_M)
 	@$(AR) $(NAME) $(OBJ_M)
 
 $(OBJ_M): $(SRC_M)
-	@$(ECHO) "\n$(RED)Mandatory objects outdated in libft! Compiling again...$(DEFAULT)"
+	@$(ECHO) "$(RED)Mandatory objects outdated in libft! Compiling again...$(DEFAULT)"
 	@$(CC) $(CFLAGS) -c $(SRC_M)
 	@mv -f $(SOURCE_M:.c=.o) $(DIR_OBJ)
 
