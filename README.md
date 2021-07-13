@@ -84,7 +84,7 @@ gcc clang make python-norminette
 Clone the repository
 ```shell
 git clone https://github.com/madebypixel02/libft.git
-cd 42-Madrid-Cursus/libft
+cd libft
 make
 ```
 
