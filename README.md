@@ -5,6 +5,7 @@ Your very own libc library :smile:
 * [Introduction](#introduction)
 * [Function Overview](#function-overview)
 * [Bonus](#bonus)
+* [Additional Functions](#additional-functions)
 * [Installation](#installation)
 * [Summary](#summary)
 
@@ -23,7 +24,6 @@ In this project we'll be implementing our home-made functions from libc, which w
 | ``ft_isascii`` | Returns whether or not a value belongs to the ``ASCII`` table |
 | ``ft_isdigit`` | Returns ``1`` if the input is a number in the ``ASCII`` table |
 | ``ft_isprint`` | Returns whether a character is printable |
-| ``ft_isspace`` | Returns if a character is a form of space (space, tab, etc) |
 | ``ft_itoa`` | Saves the given number as a string (char array) |
 | ``ft_memccpy`` | Copies from one memory point to another, until the specified character is copied or until ``n`` bytes are copied |
 | ``ft_memchr`` | Looks for a matching character inside a part of the memory |
@@ -74,6 +74,22 @@ Bonus functions to implement
 | ``ft_lstclear`` | Deletes a given element and every element after that |
 | ``ft_lstiter`` | Applies a function to the content of every node of the linked list |
 | ``ft_lstmap`` | Applies function to a copy of the list, freeing when necessary |
+
+
+## Additional Functions
+
+Besides ``mandatory`` and ``bonus`` function, I also have a set of functions inside the ``additional/`` folder. These functions are not part of the ``libft`` subject but they will be useful in future projects. Here's the list with the ones I have now
+
+
+| Function | Description | Used in |
+| :------: | :---------: | :-----: |
+| ``ft_isspace`` | Returns if a character is a form of space (space, tab, etc) | ``libft`` |
+| ``ft_max`` | Returns max between two ints | (Unused) |
+| ``ft_nbrlen`` | Retrieves length of a number in a given base | ``libft``, ``ft_printf`` |
+| ``ft_putnchar_fd`` | Writes ``n`` chars to the given file descriptor | ``ft_printf`` |
+| ``ft_putstrn_fd`` | Writes ``n`` bytes from a string to the given file descriptor | ``ft_printf`` |
+| ``ft_uitoa`` | Replica of ``ft_itoa`` which works with unsigned numbers | ``ft_printf`` |
+
 
 ## Installation
 To test this library out, it's recommended that you have the following packages installed
