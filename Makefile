@@ -6,7 +6,7 @@
 #    By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/07 10:28:33 by aperez-b          #+#    #+#              #
-#    Updated: 2021/07/13 14:29:21 by aperez-b         ###   ########.fr        #
+#    Updated: 2021/07/18 14:24:08 by aperez-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,12 +34,13 @@ RM = rm -f
 HEADER = libft.h
 DIR_M = mandatory
 DIR_B = bonus
+DIR_A = additional
 DIR_OBJ = lib
 
 SOURCE_M =	ft_atoi.c ft_bzero.c		\
-	ft_calloc.c ft_nbrlen.c		\
-	ft_isspace.c ft_itoa.c		\
-	ft_uitoa.c ft_memccpy.c		\
+	ft_calloc.c ft_putendl_fd.c	\
+	ft_itoa.c ft_putchar_fd.c		\
+	ft_putstr_fd.c ft_memccpy.c		\
 	ft_memchr.c ft_memcmp.c		\
 	ft_memcpy.c ft_isalnum.c		\
 	ft_isalpha.c ft_isascii.c		\
@@ -52,10 +53,9 @@ SOURCE_M =	ft_atoi.c ft_bzero.c		\
 	ft_strncmp.c ft_strnstr.c		\
 	ft_strrchr.c ft_strtrim.c		\
 	ft_substr.c ft_tolower.c		\
-	ft_toupper.c ft_putchar_fd.c	\
-	ft_putnchar_fd.c ft_putendl_fd.c	\
-	ft_putnbr_fd.c ft_putstr_fd.c	\
-	ft_putstrn_fd.c ft_max.c
+	ft_toupper.c ft_putnbr_fd.c
+	
+	
 
 SOURCE_B = ft_lstadd_back.c	\
 	ft_lstadd_front.c	\
@@ -67,6 +67,10 @@ SOURCE_B = ft_lstadd_back.c	\
 	ft_lstnew.c	\
 	ft_lstmap.c
 
+SOURCE_A = ft_putstrn_fd.c ft_max.c	\
+	ft_putnchar_fd.c ft_isspace.c	\
+	ft_uitoa.c ft_nbrlen.c 
+
 SRC_M = $(addprefix $(DIR_M)/, $(SOURCE_M))
 
 OBJ_M =	$(addprefix $(DIR_OBJ)/, $(SOURCE_M:.c=.o))
@@ -75,16 +79,20 @@ SRC_B = $(addprefix $(DIR_B)/, $(SOURCE_B))
 
 OBJ_B = $(addprefix $(DIR_OBJ)/, $(SOURCE_B:.c=.o))
 
+SRC_A = $(addprefix $(DIR_A)/, $(SOURCE_A))
+
+OBJ_A =	$(addprefix $(DIR_OBJ)/, $(SOURCE_A:.c=.o))
+
 all: $(NAME)
 	@$(ECHO) "$(GREEN)$(NAME) Compilation Complete!$(DEFAULT)"
 
-$(NAME) : $(OBJ_M)
-	@$(AR) $(NAME) $(OBJ_M)
+$(NAME) : $(OBJ_M) $(OBJ_A)
+	@$(AR) $(NAME) $(OBJ_M) $(OBJ_A)
 
-$(OBJ_M): $(SRC_M)
+$(OBJ_M): $(SRC_M) $(SRC_A)
 	@$(ECHO) "$(RED)Mandatory objects outdated in libft! Compiling again...$(DEFAULT)"
-	@$(CC) $(CFLAGS) -c $(SRC_M)
-	@mv -f $(SOURCE_M:.c=.o) $(DIR_OBJ)
+	@$(CC) $(CFLAGS) -c $(SRC_M) $(SRC_A)
+	@mv -f $(SOURCE_M:.c=.o) $(SOURCE_A:.c=.o) $(DIR_OBJ)
 
 bonus: $(OBJ_M) $(OBJ_B)
 	@$(AR) $(NAME) $(OBJ_M) $(OBJ_B)
@@ -95,9 +103,18 @@ $(OBJ_B): $(SRC_B)
 	@$(CC) $(CFLAGS) -c $(SRC_B)
 	@mv -f $(SOURCE_B:.c=.o) $(DIR_OBJ)
 
+additional: $(OBJ_A)
+	@$(AR) $(NAME) $(OBJ_A)
+	@$(ECHO) "$(MAGENTA)Additional Functions Compilation Complete in libft!$(DEFAULT)"
+
+$(OBJ_A): $(SRC_A)
+	@$(ECHO) "$(RED)Additional objects outdated in libft! Compiling again...$(DEFAULT)"
+	@$(CC) $(CFLAGS) -c $(SRC_A)
+	@mv -f $(SOURCE_A:.c=.o) $(DIR_OBJ)
+
 clean:
 	@$(ECHO) "$(BLUE)Cleaning up object files in libft...$(DEFAULT)"
-	@$(RM) $(OBJ_M) $(OBJ_B)
+	@$(RM) $(OBJ_M) $(OBJ_B) $(OBJ_A)
 
 fclean: clean
 	@$(RM) $(NAME)
@@ -105,9 +122,9 @@ fclean: clean
 
 norminette:
 	@$(ECHO) "$(CYAN)\nChecking norm for libft...$(DEFAULT)"
-	@norminette -R CheckForbiddenSourceHeader $(SRC_M) $(SRC_B) lib/libft.h
+	@norminette -R CheckForbiddenSourceHeader $(SRC_M) $(SRC_B) $(SRC_A) lib/libft.h
 
 re: fclean all
 	@$(ECHO) "$(YELLOW)Cleaned and Rebuilt Everything for $(NAME)!$(DEFAULT)"
 
-.PHONY: all bonus clean fclean re 
+.PHONY: all bonus additional clean fclean re 
