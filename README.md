@@ -78,7 +78,7 @@ Bonus functions to implement
 
 ## Additional Functions
 
-Besides ``mandatory`` and ``bonus`` function, I also have a set of functions inside the ``additional/`` folder. These functions are not part of the ``libft`` subject but they will be useful in future projects. Here's the list with the ones I have now
+Besides ``mandatory`` and ``bonus`` functions, I also have a set of functions inside the ``additional/`` folder. These functions are not part of the ``libft`` subject but they will be useful in future projects. Here's the list with the ones I have now
 
 
 | Function | Description | Used in |
@@ -111,7 +111,7 @@ The makefile compiles all files from the ``mandatory/`` or ``bonus/`` folders an
 ```
 make all		Compiles the libft.a file
 make bonus		Compiles all bonus files instead of the mandatory ones
-make norminette		Checks Norm for All .c and .h files in the libft/ folder	
+make norminette		Checks Norm for all .c and .h files in the libft/ folder	
 ```
 
 ## Summary
