@@ -6,7 +6,7 @@
 #    By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/07 10:28:33 by aperez-b          #+#    #+#              #
-#    Updated: 2021/07/18 14:24:08 by aperez-b         ###   ########.fr        #
+#    Updated: 2021/07/22 20:50:01 by aperez-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ DIR_B = bonus
 DIR_A = additional
 DIR_OBJ = lib
 
-SOURCE_M =	ft_atoi.c ft_bzero.c		\
+SOURCE_M =	ft_atoi.c ft_bzero.c	\
 	ft_calloc.c ft_putendl_fd.c		\
 	ft_itoa.c ft_putchar_fd.c		\
 	ft_putstr_fd.c ft_memccpy.c		\
@@ -64,12 +64,13 @@ SOURCE_B = ft_lstadd_back.c	\
 	ft_lstiter.c		\
 	ft_lstlast.c		\
 	ft_lstsize.c		\
-	ft_lstnew.c		\
+	ft_lstnew.c			\
 	ft_lstmap.c
 
 SOURCE_A = ft_putstrn_fd.c ft_max.c	\
 	ft_putnchar_fd.c ft_isspace.c	\
-	ft_uitoa.c ft_nbrlen.c 
+	ft_uitoa.c ft_nbrlen.c			\
+	ft_strrncmp.c ft_min.c
 
 SRC_M = $(addprefix $(DIR_M)/, $(SOURCE_M))
 
@@ -86,30 +87,30 @@ OBJ_A =	$(addprefix $(DIR_OBJ)/, $(SOURCE_A:.c=.o))
 all: $(NAME)
 	@$(ECHO) "$(GREEN)$(NAME) Compilation Complete!$(DEFAULT)"
 
-$(NAME) : $(OBJ_M) $(OBJ_A)
-	@$(AR) $(NAME) $(OBJ_M) $(OBJ_A)
+$(NAME): $(OBJ_M) $(OBJ_A)
+	@$(AR) $(NAME) $^
 
-$(OBJ_M): $(SRC_M) $(SRC_A)
+$(OBJ_M): $(SRC_M)
 	@$(ECHO) "$(RED)Mandatory objects outdated in libft! Compiling again...$(DEFAULT)"
-	@$(CC) $(CFLAGS) -c $(SRC_M) $(SRC_A)
-	@mv -f $(SOURCE_M:.c=.o) $(SOURCE_A:.c=.o) $(DIR_OBJ)
+	@$(CC) $(CFLAGS) -c $^
+	@mv -f $(SOURCE_M:.c=.o) $(DIR_OBJ)
 
 bonus: $(OBJ_M) $(OBJ_B)
-	@$(AR) $(NAME) $(OBJ_M) $(OBJ_B)
+	@$(AR) $(NAME) $^
 	@$(ECHO) "$(MAGENTA)Bonuses Compilation Complete in libft!$(DEFAULT)"
 
 $(OBJ_B): $(SRC_B)
 	@$(ECHO) "$(RED)Bonus objects outdated in libft! Compiling again...$(DEFAULT)"
-	@$(CC) $(CFLAGS) -c $(SRC_B)
+	@$(CC) $(CFLAGS) -c $^
 	@mv -f $(SOURCE_B:.c=.o) $(DIR_OBJ)
 
 additional: $(OBJ_A)
-	@$(AR) $(NAME) $(OBJ_A)
+	@$(AR) $(NAME) $^
 	@$(ECHO) "$(MAGENTA)Additional Functions Compilation Complete in libft!$(DEFAULT)"
 
 $(OBJ_A): $(SRC_A)
 	@$(ECHO) "$(RED)Additional objects outdated in libft! Compiling again...$(DEFAULT)"
-	@$(CC) $(CFLAGS) -c $(SRC_A)
+	@$(CC) $(CFLAGS) -c $^
 	@mv -f $(SOURCE_A:.c=.o) $(DIR_OBJ)
 
 clean:
