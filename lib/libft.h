@@ -6,7 +6,7 @@
 /*   By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 17:32:34 by aperez-b          #+#    #+#             */
-/*   Updated: 2021/05/01 10:46:28 by aperez-b         ###   ########.fr       */
+/*   Updated: 2021/07/22 20:12:54 by aperez-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,11 @@ int		ft_tolower(int c);
 int		ft_toupper(int c);
 int		ft_nbrlen(long n, int base);
 int		ft_max(int a, int b);
+int		ft_min(int a, int b);
+int		ft_strrncmp(const char *s1, const char *s2, size_t n);
 int		ft_isspace(char c);
-void	ft_lstadd_back(t_list **lst, t_list *new);
-void	ft_lstadd_front(t_list **lst, t_list *new);
+void	ft_lstadd_back(t_list **lst, t_list *newnode);
+void	ft_lstadd_front(t_list **lst, t_list *newnode);
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
