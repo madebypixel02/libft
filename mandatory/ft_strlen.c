@@ -6,7 +6,7 @@
 /*   By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 17:08:42 by aperez-b          #+#    #+#             */
-/*   Updated: 2021/04/08 10:53:15 by aperez-b         ###   ########.fr       */
+/*   Updated: 2021/07/22 20:02:28 by aperez-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ size_t	ft_strlen(const char *s)
 	int	count;
 
 	count = 0;
+	if (!s)
+		return (count);
 	while (*s != '\0')
 	{
 		count++;
