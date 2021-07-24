@@ -6,7 +6,7 @@
 #    By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/07 10:28:33 by aperez-b          #+#    #+#              #
-#    Updated: 2021/07/22 20:50:01 by aperez-b         ###   ########.fr        #
+#    Updated: 2021/07/22 22:25:06 by aperez-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,7 +70,8 @@ SOURCE_B = ft_lstadd_back.c	\
 SOURCE_A = ft_putstrn_fd.c ft_max.c	\
 	ft_putnchar_fd.c ft_isspace.c	\
 	ft_uitoa.c ft_nbrlen.c			\
-	ft_strrncmp.c ft_min.c
+	ft_strrncmp.c ft_min.c			\
+	ft_countchar.c
 
 SRC_M = $(addprefix $(DIR_M)/, $(SOURCE_M))
 
