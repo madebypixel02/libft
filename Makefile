@@ -6,7 +6,7 @@
 #    By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/07 10:28:33 by aperez-b          #+#    #+#              #
-#    Updated: 2021/07/26 13:57:01 by aperez-b         ###   ########.fr        #
+#    Updated: 2021/07/28 11:31:50 by aperez-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,7 +86,6 @@ SRC_A = $(addprefix $(DIR_A)/, $(SOURCE_A))
 OBJ_A =	$(addprefix $(DIR_OBJ)/, $(SOURCE_A:.c=.o))
 
 all: $(NAME)
-	@$(ECHO) "$(GREEN)$(NAME) Compilation Complete!$(DEFAULT)"
 
 $(NAME): $(OBJ_M) $(OBJ_A)
 	@$(AR) $(NAME) $^
@@ -95,10 +94,11 @@ $(OBJ_M): $(SRC_M)
 	@$(ECHO) "$(RED)Mandatory objects outdated in libft! Compiling again...$(DEFAULT)"
 	@$(CC) $(CFLAGS) -c $^
 	@mv -f $(SOURCE_M:.c=.o) $(DIR_OBJ)
+	@$(ECHO) "$(GREEN)Mandatory Compilation Complete!$(DEFAULT)"
 
 bonus: $(OBJ_M) $(OBJ_B)
 	@$(AR) $(NAME) $^
-	@$(ECHO) "$(MAGENTA)Bonuses Compilation Complete in libft!$(DEFAULT)"
+	@$(ECHO) "$(MAGENTA)Bonus Compilation Complete in libft!$(DEFAULT)"
 
 $(OBJ_B): $(SRC_B)
 	@$(ECHO) "$(RED)Bonus objects outdated in libft! Compiling again...$(DEFAULT)"
@@ -107,12 +107,12 @@ $(OBJ_B): $(SRC_B)
 
 additional: $(OBJ_A)
 	@$(AR) $(NAME) $^
-	@$(ECHO) "$(MAGENTA)Additional Functions Compilation Complete in libft!$(DEFAULT)"
 
 $(OBJ_A): $(SRC_A)
 	@$(ECHO) "$(RED)Additional objects outdated in libft! Compiling again...$(DEFAULT)"
 	@$(CC) $(CFLAGS) -c $^
 	@mv -f $(SOURCE_A:.c=.o) $(DIR_OBJ)
+	@$(ECHO) "$(MAGENTA)Additional Functions Compilation Complete in libft!$(DEFAULT)"
 
 clean:
 	@$(ECHO) "$(BLUE)Cleaning up object files in libft...$(DEFAULT)"
@@ -128,5 +128,9 @@ norminette:
 
 re: fclean all
 	@$(ECHO) "$(YELLOW)Cleaned and Rebuilt Everything for $(NAME)!$(DEFAULT)"
+git:
+	git add .
+	git commit
+	git push
 
-.PHONY: all bonus additional clean fclean re 
+.PHONY: all bonus additional clean fclean git norminette re 
