@@ -6,7 +6,7 @@
 #    By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/07 10:28:33 by aperez-b          #+#    #+#              #
-#    Updated: 2021/08/03 17:59:41 by aperez-b         ###   ########.fr        #
+#    Updated: 2021/08/04 18:40:34 by aperez-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,8 +88,8 @@ OBJ_A =	$(addprefix $(DIR_OBJ)/, $(SOURCE_A:.c=.o))
 
 all: $(NAME)
 
-$(NAME): $(OBJ_M) $(OBJ_A) bonus
-	@$(AR) $(NAME) $(OBJ_M) $(OBJ_A)
+$(NAME): $(OBJ_M) $(OBJ_A) $(OBJ_B)
+	@$(AR) $(NAME) $^
 
 $(OBJ_M): $(SRC_M)
 	@$(ECHO) "$(RED)Mandatory objects outdated in libft! Compiling again...$(DEFAULT)"
@@ -99,12 +99,12 @@ $(OBJ_M): $(SRC_M)
 
 bonus: $(OBJ_M) $(OBJ_B)
 	@$(AR) $(NAME) $^
-	@$(ECHO) "$(MAGENTA)Bonus Compilation Complete in libft!$(DEFAULT)"
 
 $(OBJ_B): $(SRC_B)
 	@$(ECHO) "$(RED)Bonus objects outdated in libft! Compiling again...$(DEFAULT)"
 	@$(CC) $(CFLAGS) -c $^
 	@mv -f $(SOURCE_B:.c=.o) $(DIR_OBJ)
+	@$(ECHO) "$(MAGENTA)Bonus Compilation Complete in libft!$(DEFAULT)"
 
 additional: $(OBJ_A)
 	@$(AR) $(NAME) $^
