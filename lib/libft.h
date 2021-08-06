@@ -6,7 +6,7 @@
 /*   By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 17:32:34 by aperez-b          #+#    #+#             */
-/*   Updated: 2021/08/06 09:21:54 by aperez-b         ###   ########.fr       */
+/*   Updated: 2021/08/06 09:41:57 by aperez-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ t_list		*ft_lstnew(void *content);
 int			ft_lstsize(t_list *lst);
 int			ft_sqrt(int nb);
 int			ft_recursive_power(int nb, int power);
+int			ft_euclideandistance(t_vector src, t_vector dest);
 
 /* Creates new vector with given x and y */
 t_vector	ft_newvector(int x, int y);
