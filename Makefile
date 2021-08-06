@@ -6,7 +6,7 @@
 #    By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/07 10:28:33 by aperez-b          #+#    #+#              #
-#    Updated: 2021/08/06 09:22:57 by aperez-b         ###   ########.fr        #
+#    Updated: 2021/08/06 19:54:47 by aperez-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,7 +75,8 @@ SOURCE_A = ft_putstrn_fd.c ft_max.c	\
 	ft_recursive_power.c			\
 	ft_chartostr.c ft_sqrt.c		\
 	ft_euclideandistance.c			\
-	ft_newvector.c
+	ft_newvector.c ft_free_matrix.c	\
+	ft_dup_matrix.c
 
 SRC_M = $(addprefix $(DIR_M)/, $(SOURCE_M))
 

@@ -6,7 +6,7 @@
 /*   By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 17:32:34 by aperez-b          #+#    #+#             */
-/*   Updated: 2021/08/06 09:41:57 by aperez-b         ###   ########.fr       */
+/*   Updated: 2021/08/06 20:08:17 by aperez-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,7 @@ int			ft_euclideandistance(t_vector src, t_vector dest);
 
 /* Creates new vector with given x and y */
 t_vector	ft_newvector(int x, int y);
+void		ft_free_matrix(char ***m);
+char		**ft_dup_matrix(char **m);
 
 #endif
