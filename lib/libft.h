@@ -6,7 +6,7 @@
 /*   By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 17:32:34 by aperez-b          #+#    #+#             */
-/*   Updated: 2021/08/06 20:08:17 by aperez-b         ###   ########.fr       */
+/*   Updated: 2021/08/29 21:43:20 by aperez-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ size_t		ft_strlcat(char *dst, const char *src, size_t size);
 size_t		ft_strlcpy(char *dst, const char *src, size_t size);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 int			ft_atoi(const char *nptr);
+int			ft_atoi2(const char *nptr, int *nbr);
 char		*ft_itoa(int n);
 char		*ft_uitoa(unsigned int n);
 int			ft_putchar_fd(char c, int fd);
@@ -90,8 +91,6 @@ int			ft_lstsize(t_list *lst);
 int			ft_sqrt(int nb);
 int			ft_recursive_power(int nb, int power);
 int			ft_euclideandistance(t_vector src, t_vector dest);
-
-/* Creates new vector with given x and y */
 t_vector	ft_newvector(int x, int y);
 void		ft_free_matrix(char ***m);
 char		**ft_dup_matrix(char **m);
