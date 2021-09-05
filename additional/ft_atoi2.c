@@ -6,37 +6,37 @@
 /*   By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/29 20:52:48 by aperez-b          #+#    #+#             */
-/*   Updated: 2021/09/01 19:39:43 by aperez-b         ###   ########.fr       */
+/*   Updated: 2021/09/05 16:35:00 by aperez-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lib/libft.h"
 
-int	ft_atoi2(const char *nptr, int *nbr)
+int	ft_atoi2(const char *nptr, long *nbr)
 {
-	long	n;
 	int		sign;
 	long	max;
 
 	sign = 1;
 	max = 2147483647;
-	n = 0;
+	*nbr = 0;
+	while (ft_isspace(*nptr))
+		nptr++;
 	if (*nptr == '-')
 		sign = -sign;
-	if ((*nptr == '-' || *nptr == '+') && *(nptr + 1))
+	if (*nptr == '-' || *nptr == '+')
 		nptr++;
-	while (*nptr >= '0' && *nptr <= '9')
+	while (ft_isdigit(*nptr))
 	{
-		n = 10 * n + (*nptr - '0');
-		if (n > max && sign == 1)
+		*nbr = 10 * *nbr + (*nptr - '0');
+		if (*nbr > max && sign == 1)
 			return (-1);
-		if (n > max + 1 && sign == -1)
+		if (*nbr > max + 1 && sign == -1)
 			return (-1);
 		nptr++;
 	}
-	if (*nptr)
+	if (*nptr && !ft_isspace(*nptr))
 		return (-1);
-	n *= sign;
-	*nbr = n;
+	*nbr *= sign;
 	return (0);
 }

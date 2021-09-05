@@ -6,7 +6,7 @@
 /*   By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 17:32:34 by aperez-b          #+#    #+#             */
-/*   Updated: 2021/08/29 21:43:20 by aperez-b         ###   ########.fr       */
+/*   Updated: 2021/09/05 16:33:55 by aperez-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ size_t		ft_strlcat(char *dst, const char *src, size_t size);
 size_t		ft_strlcpy(char *dst, const char *src, size_t size);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 int			ft_atoi(const char *nptr);
-int			ft_atoi2(const char *nptr, int *nbr);
+int			ft_atoi2(const char *nptr, long *nbr);
 char		*ft_itoa(int n);
 char		*ft_uitoa(unsigned int n);
 int			ft_putchar_fd(char c, int fd);
