@@ -1,5 +1,5 @@
 # libft
-Your very own libc library :smile:
+*Your very own first library :smile:*
 
 ### Table of Contents
 * [Introduction](#introduction)
@@ -84,17 +84,28 @@ Besides ``mandatory`` and ``bonus`` functions, I also have a set of functions in
 | Function | Description | Used in |
 | :------: | :---------: | :-----: |
 | ``ft_isspace`` | Returns if a character is a form of space (space, tab, etc) | ``libft`` |
-| ``ft_max`` | Returns max between two ints | (Unused) |
+| ``ft_min`` | Returns min between two ints | N/A |
+| ``ft_max`` | Returns max between two ints | N/A |
 | ``ft_nbrlen`` | Retrieves length of a number in a given base | ``libft``, ``ft_printf`` |
 | ``ft_putnchar_fd`` | Writes ``n`` chars to the given file descriptor | ``ft_printf`` |
 | ``ft_putstrn_fd`` | Writes ``n`` bytes from a string to the given file descriptor | ``ft_printf`` |
 | ``ft_uitoa`` | Replica of ``ft_itoa`` which works with unsigned numbers | ``ft_printf`` |
-
+| ``ft_countchar`` | Returns number of matching chars in a string | ``so_long`` |
+| ``ft_chartostr`` | Allocates memory for a string of one char | ~``so_long``~ |
+| ``ft_dup_matrix`` | Allocates and fully duplicates a matrix (array of arrays) | ``so_long`` |
+| ``ft_euclideandistance`` | Returns value of the euclidean distance between two points | ``so_long`` |
+| ``ft_free_matrix`` | Frees all allocated memory from a matrix (array of arrays) | ``so_long`` |
+| ``ft_newvector`` | Creates a new t_vector with the given ``x`` and ``y`` parameters | ``so_long`` |
+| ``ft_recursive_power`` | Calculates the power of a number given a base with recursion | ``so_long`` |
+| ``ft_sqrt`` | Returns sqare root of number as closest (rounded) int | ``so_long`` |
+| ``ft_strenlarge`` | Joins two strings regardless if either one is ``NULL`` (similar to ``ft_strjoin``) | ``so_long`` |
+| ``ft_strrncmp`` | Compares ends of two strings up to the ``n``-th character | ``so_long`` |
+| ``ft_atoi2`` | More restrictive version of ``ft_atoi`` | ``push_swap`` |
 
 ## Installation
 To test this library out, it's recommended that you have the following packages installed
 ```
-gcc clang make python-norminette
+gcc clang make python-norminette valgrind (linux)
 ```
 
 Clone the repository
