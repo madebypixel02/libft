@@ -6,7 +6,7 @@
 /*   By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 17:32:34 by aperez-b          #+#    #+#             */
-/*   Updated: 2021/09/05 20:10:06 by aperez-b         ###   ########.fr       */
+/*   Updated: 2021/09/17 16:27:07 by aperez-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,9 @@ int			ft_putendl_fd(char *s, int fd);
 
 /* Prints number to the given file descriptor */
 int			ft_putnbr_fd(int n, int fd);
+
+/* Prints number in given base to the given file descriptor */
+int			ft_putnbr_base_fd(long n, char *base, int fd);
 
 /* Prints string to the given file descriptor */
 int			ft_putstr_fd(char *s, int fd);
