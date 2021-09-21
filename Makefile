@@ -6,7 +6,7 @@
 #    By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/07 10:28:33 by aperez-b          #+#    #+#              #
-#    Updated: 2021/09/17 16:55:02 by aperez-b         ###   ########.fr        #
+#    Updated: 2021/09/21 11:59:14 by aperez-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -116,7 +116,7 @@ additional: $(OBJ_A)
 
 $(OBJ_A): $(SRC_A)
 	@$(ECHO) "$(RED)Additional objects outdated in libft! Compiling again...$(DEFAULT)"
-	$(CC) $(CFLAGS) -c $^
+	@$(CC) $(CFLAGS) -c $^
 	@mv -f $(SOURCE_A:.c=.o) $(DIR_OBJ)
 	@$(ECHO) "$(MAGENTA)Additional Functions Compilation Complete in libft!$(DEFAULT)"
 
