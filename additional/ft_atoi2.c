@@ -6,7 +6,7 @@
 /*   By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/29 20:52:48 by aperez-b          #+#    #+#             */
-/*   Updated: 2021/09/21 23:08:51 by aperez-b         ###   ########.fr       */
+/*   Updated: 2021/09/22 19:28:01 by aperez-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 int	ft_atoi2(const char *nptr, long *nbr)
 {
 	int		sign;
-	long	max;
 
 	sign = 1;
-	max = 2147483647;
 	*nbr = 0;
 	while (ft_isspace(*nptr))
 		nptr++;
@@ -31,9 +29,9 @@ int	ft_atoi2(const char *nptr, long *nbr)
 	while (ft_isdigit(*nptr))
 	{
 		*nbr = 10 * *nbr + (*nptr - '0');
-		if (*nbr > max && sign == 1)
+		if (*nbr > 2147483647 && sign == 1)
 			return (-1);
-		if (*nbr > max + 1 && sign == -1)
+		if (*nbr > 2147483648 && sign == -1)
 			return (-1);
 		nptr++;
 	}
