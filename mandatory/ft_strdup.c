@@ -6,7 +6,7 @@
 /*   By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 17:47:51 by aperez-b          #+#    #+#             */
-/*   Updated: 2021/04/11 09:19:29 by aperez-b         ###   ########.fr       */
+/*   Updated: 2021/09/22 21:29:00 by aperez-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_strdup(const char *s1)
 	char	*d;
 	size_t	size;
 
+	if (!s1)
+		return (NULL);
 	size = ft_strlen(s1);
 	d = (char *)malloc(size + 1);
 	if (!d)
