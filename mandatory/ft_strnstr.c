@@ -6,7 +6,7 @@
 /*   By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 17:10:05 by aperez-b          #+#    #+#             */
-/*   Updated: 2021/04/08 14:35:36 by aperez-b         ###   ########.fr       */
+/*   Updated: 2021/09/24 13:28:37 by aperez-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	size_t		i;
-	size_t		j;
+	size_t	i;
+	size_t	j;
 
 	if (little[0] == '\0')
 		return ((char *)big);

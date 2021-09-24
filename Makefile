@@ -6,7 +6,7 @@
 #    By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/07 10:28:33 by aperez-b          #+#    #+#              #
-#    Updated: 2021/09/21 12:33:52 by aperez-b         ###   ########.fr        #
+#    Updated: 2021/09/24 12:18:11 by aperez-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,6 +78,7 @@ SOURCE_A = ft_putnbr_base_fd.c		\
 	ft_euclideandistance.c			\
 	ft_newvector.c ft_free_matrix.c	\
 	ft_dup_matrix.c ft_atoi2.c		\
+	ft_strchr_i.c
 
 SRC_M = $(addprefix $(DIR_M)/, $(SOURCE_M))
 

@@ -6,7 +6,7 @@
 /*   By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 17:32:34 by aperez-b          #+#    #+#             */
-/*   Updated: 2021/09/17 16:27:07 by aperez-b         ###   ########.fr       */
+/*   Updated: 2021/09/24 13:29:45 by aperez-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,8 +137,13 @@ void		*ft_memmove(void *dest, const void *src, size_t n);
 /* Assigns a character n times to a part of the memory*/
 void		*ft_memset(void *s, int c, size_t n);
 
-/* Looks for a specific character inside a given string */
+/* Looks for a specific character inside a given string,
+ * returning pointer to it*/
 char		*ft_strchr(const char *s, int c);
+
+/* Looks for a specific character inside a given string,
+ * returning its index */
+int			ft_strchr_i(const char *s, int c);
 
 /* Looks for a given character in a string, reading it from back to front */
 char		*ft_strrchr(const char *s, int c);

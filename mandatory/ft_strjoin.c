@@ -6,7 +6,7 @@
 /*   By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 16:56:41 by aperez-b          #+#    #+#             */
-/*   Updated: 2021/04/08 18:50:46 by aperez-b         ###   ########.fr       */
+/*   Updated: 2021/09/24 14:01:44 by aperez-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char	*s3;
 	int		i;
 
-	if (s1 == NULL || s2 == NULL)
+	if (s1 == NULL && s2 == NULL)
 		return (NULL);
 	i = 0;
 	len_s1 = ft_strlen(s1);
