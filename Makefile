@@ -6,7 +6,7 @@
 #    By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/07 10:28:33 by aperez-b          #+#    #+#              #
-#    Updated: 2021/09/27 18:23:03 by aperez-b         ###   ########.fr        #
+#    Updated: 2021/09/27 18:39:28 by aperez-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ ECHO = echo
 ifeq ($(UNAME), Linux)
 	ECHO = echo -e
 endif
-CC = gcc
+CC = gcc -MD
 CFLAGS = -Wall -Wextra -Werror
 AR = ar rcs
 RM = rm -f
@@ -139,5 +139,9 @@ git:
 	git add .
 	git commit
 	git push
+
+-include $(OBJ_DIR)/*.d
+-include $(OBJB_DIR)/*.d
+-include $(OBJA_DIR)/*.d
 
 .PHONY: all bonus additional clean fclean git norminette create_dirs re 
