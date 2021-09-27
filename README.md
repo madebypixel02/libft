@@ -117,7 +117,7 @@ make
 
 * Usage:
 
-The makefile compiles all files from the ``mandatory/`` or ``bonus/`` folders and saves the object files to the ``lib/`` folder. It then generates the output file ``libft.a``. Here are some of the commands you can try:
+The makefile compiles all files from the ``src/``, ``srcb/`` or ``srca/`` folders and saves the object files to the ``obj/``, ``objb`` and ``obja`` folders. It then generates the output file ``libft.a`` inside the ``bin/`` folder. Here are some of the commands you can try:
 
 ```
 make all		Compiles the libft.a file
