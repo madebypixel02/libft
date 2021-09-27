@@ -6,7 +6,7 @@
 #    By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/07 10:28:33 by aperez-b          #+#    #+#              #
-#    Updated: 2021/09/24 12:18:11 by aperez-b         ###   ########.fr        #
+#    Updated: 2021/09/27 18:23:03 by aperez-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,18 +26,22 @@ ECHO = echo
 ifeq ($(UNAME), Linux)
 	ECHO = echo -e
 endif
-NAME = libft.a
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 AR = ar rcs
 RM = rm -f
 HEADER = libft.h
-DIR_M = mandatory
-DIR_B = bonus
-DIR_A = additional
-DIR_OBJ = lib
+SRC_DIR = src
+SRCB_DIR = srcb
+SRCA_DIR = srca
+OBJ_DIR = obj
+OBJB_DIR = objb
+OBJA_DIR = obja
+BIN_DIR = bin
+BIN = libft.a
+NAME = $(BIN_DIR)/$(BIN)
 
-SOURCE_M =	ft_atoi.c ft_bzero.c	\
+SRC =	ft_atoi.c ft_bzero.c	\
 	ft_calloc.c ft_putendl_fd.c		\
 	ft_itoa.c ft_putchar_fd.c		\
 	ft_putstr_fd.c ft_memccpy.c		\
@@ -54,10 +58,8 @@ SOURCE_M =	ft_atoi.c ft_bzero.c	\
 	ft_strrchr.c ft_strtrim.c		\
 	ft_substr.c ft_tolower.c		\
 	ft_toupper.c ft_putnbr_fd.c
-	
-	
 
-SOURCE_B = ft_lstadd_back.c	\
+SRCB = ft_lstadd_back.c	\
 	ft_lstadd_front.c	\
 	ft_lstclear.c		\
 	ft_lstdelone.c		\
@@ -67,7 +69,7 @@ SOURCE_B = ft_lstadd_back.c	\
 	ft_lstnew.c			\
 	ft_lstmap.c
 
-SOURCE_A = ft_putnbr_base_fd.c		\
+SRCA = ft_putnbr_base_fd.c		\
 	ft_putstrn_fd.c ft_max.c		\
 	ft_putnchar_fd.c ft_isspace.c	\
 	ft_uitoa.c ft_nbrlen.c			\
@@ -80,64 +82,62 @@ SOURCE_A = ft_putnbr_base_fd.c		\
 	ft_dup_matrix.c ft_atoi2.c		\
 	ft_strchr_i.c
 
-SRC_M = $(addprefix $(DIR_M)/, $(SOURCE_M))
+OBJ =	$(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
-OBJ_M =	$(addprefix $(DIR_OBJ)/, $(SOURCE_M:.c=.o))
+OBJB = $(addprefix $(OBJB_DIR)/, $(SRCB:.c=.o))
 
-SRC_B = $(addprefix $(DIR_B)/, $(SOURCE_B))
-
-OBJ_B = $(addprefix $(DIR_OBJ)/, $(SOURCE_B:.c=.o))
-
-SRC_A = $(addprefix $(DIR_A)/, $(SOURCE_A))
-
-OBJ_A =	$(addprefix $(DIR_OBJ)/, $(SOURCE_A:.c=.o))
+OBJA =	$(addprefix $(OBJA_DIR)/, $(SRCA:.c=.o))
 
 all: $(NAME)
 
-$(NAME): $(OBJ_M) $(OBJ_A) $(OBJ_B)
-	@$(AR) $(NAME) $^
+$(NAME): create_dirs $(OBJ) bonus additional
+	@$(ECHO) "$(GREEN)$(BIN) is up to date!$(DEFAULT)"
 
-$(OBJ_M): $(SRC_M)
-	@$(ECHO) "$(RED)Mandatory objects outdated in libft! Compiling again...$(DEFAULT)"
-	@$(CC) $(CFLAGS) -c $^
-	@mv -f $(SOURCE_M:.c=.o) $(DIR_OBJ)
-	@$(ECHO) "$(GREEN)Mandatory Compilation Complete in libft!$(DEFAULT)"
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@$(ECHO) "Compiling $(BLUE)$<$(DEFAULT)..."
+	@$(CC) $(CFLAGS) -c $< -o $@
 
-bonus: $(OBJ_M) $(OBJ_B)
-	@$(AR) $(NAME) $^
-
-$(OBJ_B): $(SRC_B)
-	@$(ECHO) "$(RED)Bonus objects outdated in libft! Compiling again...$(DEFAULT)"
-	@$(CC) $(CFLAGS) -c $^
-	@mv -f $(SOURCE_B:.c=.o) $(DIR_OBJ)
+bonus: create_dirs $(OBJ) $(OBJB)
+	@$(AR) $(NAME) $(OBJ) $(OBJB)
 	@$(ECHO) "$(MAGENTA)Bonus Compilation Complete in libft!$(DEFAULT)"
 
-additional: $(OBJ_A)
-	@$(AR) $(NAME) $^
+$(OBJB_DIR)/%.o: $(SRCB_DIR)/%.c
+	@$(ECHO) "Compiling $(BLUE)$<$(DEFAULT)..."
+	@$(CC) $(CFLAGS) -c $< -o $@
 
-$(OBJ_A): $(SRC_A)
-	@$(ECHO) "$(RED)Additional objects outdated in libft! Compiling again...$(DEFAULT)"
-	@$(CC) $(CFLAGS) -c $^
-	@mv -f $(SOURCE_A:.c=.o) $(DIR_OBJ)
+additional: create_dirs $(OBJA)
+	@$(AR) $(NAME) $(OBJA)
 	@$(ECHO) "$(MAGENTA)Additional Functions Compilation Complete in libft!$(DEFAULT)"
 
+$(OBJA_DIR)/%.o: $(SRCA_DIR)/%.c
+	@$(ECHO) "Compiling $(BLUE)$<$(DEFAULT)..."
+	@$(CC) $(CFLAGS) -c $< -o $@
+
 clean:
-	@$(ECHO) "$(BLUE)Cleaning up object files in libft...$(DEFAULT)"
-	@$(RM) $(OBJ_M) $(OBJ_B) $(OBJ_A)
+	@$(ECHO) "$(CYAN)Cleaning up object files in libft...$(DEFAULT)"
+	@$(RM) -r $(OBJ_DIR)
+	@$(RM) -r $(OBJB_DIR)
+	@$(RM) -r $(OBJA_DIR)
 
 fclean: clean
-	@$(RM) $(NAME)
+	@$(RM) -r $(BIN_DIR)
 	@$(ECHO) "$(CYAN)Removed $(NAME)$(DEFAULT)"
+
+create_dirs:
+	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJB_DIR)
+	@mkdir -p $(OBJA_DIR)
+	@mkdir -p $(BIN_DIR)
 
 norminette:
 	@$(ECHO) "$(CYAN)\nChecking norm for libft...$(DEFAULT)"
-	@norminette -R CheckForbiddenSourceHeader $(SRC_M) $(SRC_B) $(SRC_A) lib/libft.h
+	@norminette -R CheckForbiddenSourceHeader $(SRC_DIR) $(SRCB_DIR) $(SRCA_DIR) inc/libft.h
 
 re: fclean all
-	@$(ECHO) "$(YELLOW)Cleaned and Rebuilt Everything for $(NAME)!$(DEFAULT)"
+	@$(ECHO) "$(YELLOW)Cleaned and Rebuilt Everything for libft!$(DEFAULT)"
 git:
 	git add .
 	git commit
 	git push
 
-.PHONY: all bonus additional clean fclean git norminette re 
+.PHONY: all bonus additional clean fclean git norminette create_dirs re 
