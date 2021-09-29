@@ -6,7 +6,7 @@
 /*   By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 17:32:34 by aperez-b          #+#    #+#             */
-/*   Updated: 2021/09/24 13:29:45 by aperez-b         ###   ########.fr       */
+/*   Updated: 2021/09/29 14:11:30 by aperez-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,6 +211,9 @@ t_list		*ft_lstnew(void *content);
 
 /* Returns number of elements of linked list */
 int			ft_lstsize(t_list *lst);
+
+/* Returns the node at the given index or null */
+t_list		*ft_lstget_at(t_list *lst, int i);
 
 /* Returns sqare root of number as closest (rounded) int */
 int			ft_sqrt(int nb);

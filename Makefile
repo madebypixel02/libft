@@ -6,7 +6,7 @@
 #    By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/07 10:28:33 by aperez-b          #+#    #+#              #
-#    Updated: 2021/09/27 18:39:28 by aperez-b         ###   ########.fr        #
+#    Updated: 2021/09/29 14:09:46 by aperez-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,7 +67,8 @@ SRCB = ft_lstadd_back.c	\
 	ft_lstlast.c		\
 	ft_lstsize.c		\
 	ft_lstnew.c			\
-	ft_lstmap.c
+	ft_lstmap.c			\
+	ft_lstget_at.c
 
 SRCA = ft_putnbr_base_fd.c		\
 	ft_putstrn_fd.c ft_max.c		\
