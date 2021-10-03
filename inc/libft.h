@@ -6,7 +6,7 @@
 /*   By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 17:32:34 by aperez-b          #+#    #+#             */
-/*   Updated: 2021/09/29 14:11:30 by aperez-b         ###   ########.fr       */
+/*   Updated: 2021/10/03 10:54:20 by aperez-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,12 +163,6 @@ int			ft_toupper(int c);
 
 /* Retrieves length of a number in a given base */
 int			ft_nbrlen(long n, int base);
-
-/* Returns max between two ints */
-int			ft_max(int a, int b);
-
-/* Returns min between two ints */
-int			ft_min(int a, int b);
 
 /* Joins two strings regardless if either one is NULL (similar to ft_strjoin) */
 char		*ft_strenlarge(char *s1, char *s2);
