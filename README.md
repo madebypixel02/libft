@@ -84,7 +84,7 @@ Besides ``mandatory`` and ``bonus`` functions, I also have a set of functions in
 
 | Function | Description | Used in |
 | :------: | :---------: | :-----: |
-| ``ft_isspace`` | Returns if a character is a form of space (space, tab, etc) | ``libft`` |
+| ``ft_isspace`` | Returns if a character is a form of space (space, tab, etc) | ``libft``, ``push_swap`` |
 | ``ft_nbrlen`` | Retrieves length of a number in a given base | ``libft``, ``ft_printf`` |
 | ``ft_putnchar_fd`` | Writes ``n`` chars to the given file descriptor | ``ft_printf`` |
 | ``ft_putstrn_fd`` | Writes ``n`` bytes from a string to the given file descriptor | ``ft_printf`` |
