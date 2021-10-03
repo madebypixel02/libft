@@ -6,7 +6,7 @@
 #    By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/07 10:28:33 by aperez-b          #+#    #+#              #
-#    Updated: 2021/09/29 14:09:46 by aperez-b         ###   ########.fr        #
+#    Updated: 2021/10/03 10:57:55 by aperez-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,17 +70,13 @@ SRCB = ft_lstadd_back.c	\
 	ft_lstmap.c			\
 	ft_lstget_at.c
 
-SRCA = ft_putnbr_base_fd.c		\
-	ft_putstrn_fd.c ft_max.c		\
-	ft_putnchar_fd.c ft_isspace.c	\
-	ft_uitoa.c ft_nbrlen.c			\
-	ft_strrncmp.c ft_min.c			\
-	ft_countchar.c ft_strenlarge.c	\
-	ft_recursive_power.c			\
-	ft_chartostr.c ft_sqrt.c		\
-	ft_euclideandistance.c			\
-	ft_newvector.c ft_free_matrix.c	\
-	ft_dup_matrix.c ft_atoi2.c		\
+SRCA = ft_putnbr_base_fd.c ft_putstrn_fd.c		\
+	ft_putnchar_fd.c ft_isspace.c ft_uitoa.c	\
+	ft_nbrlen.c ft_strrncmp.c ft_countchar.c	\
+	ft_strenlarge.c ft_recursive_power.c		\
+	ft_chartostr.c ft_sqrt.c					\
+	ft_euclideandistance.c ft_newvector.c		\
+	ft_free_matrix.c ft_dup_matrix.c ft_atoi2.c	\
 	ft_strchr_i.c
 
 OBJ =	$(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
