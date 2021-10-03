@@ -92,8 +92,8 @@ Besides ``mandatory`` and ``bonus`` functions, I also have a set of functions in
 | ``ft_countchar`` | Returns number of matching chars in a string | ``so_long`` |
 | ``ft_chartostr`` | Allocates memory for a string of one char | ~``so_long``~ |
 | ``ft_dup_matrix`` | Allocates and fully duplicates a matrix (array of arrays) | ``so_long`` |
-| ``ft_euclideandistance`` | Returns value of the euclidean distance between two points | ``so_long``, ``push_swap``, ``pipex`` |
-| ``ft_free_matrix`` | Frees all allocated memory from a matrix (array of arrays) | ``so_long`` |
+| ``ft_euclideandistance`` | Returns value of the euclidean distance between two points | ``so_long`` |
+| ``ft_free_matrix`` | Frees all allocated memory from a matrix (array of arrays) | ``so_long``, ``push_swap``, ``pipex`` |
 | ``ft_newvector`` | Creates a new t_vector with the given ``x`` and ``y`` parameters | ``so_long`` |
 | ``ft_recursive_power`` | Calculates the power of a number given a base with recursion | ``so_long`` |
 | ``ft_sqrt`` | Returns sqare root of number as closest (rounded) int | ``so_long`` |
