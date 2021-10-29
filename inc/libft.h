@@ -6,7 +6,7 @@
 /*   By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 17:32:34 by aperez-b          #+#    #+#             */
-/*   Updated: 2021/10/23 11:06:10 by aperez-b         ###   ########.fr       */
+/*   Updated: 2021/10/29 13:56:29 by aperez-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -232,5 +232,8 @@ int			ft_putmatrix_fd(char **m, int fd);
 
 /* Returns length of a matrix (char **) */
 int			ft_matrixlen(char **m);
+
+/* Strtrim from all occurrences of set */
+char		*ft_strtrim_all(char const *s1, char const *set);
 
 #endif
