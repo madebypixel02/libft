@@ -78,7 +78,7 @@ SRCA = ft_putnbr_base_fd.c ft_putstrn_fd.c		\
 	ft_euclideandistance.c ft_newvector.c		\
 	ft_free_matrix.c ft_dup_matrix.c ft_atoi2.c	\
 	ft_strchr_i.c ft_putmatrix_fd.c				\
-	ft_matrixlen.c ft_strtrim_all.c
+	ft_matrixlen.c
 
 OBJ =	$(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
