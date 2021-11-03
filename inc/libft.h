@@ -6,7 +6,7 @@
 /*   By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 17:32:34 by aperez-b          #+#    #+#             */
-/*   Updated: 2021/10/29 13:56:29 by aperez-b         ###   ########.fr       */
+/*   Updated: 2021/11/02 20:46:00 by aperez-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,10 @@ char		*ft_strchr(const char *s, int c);
 /* Looks for a specific character inside a given string,
  * returning its index */
 int			ft_strchr_i(const char *s, int c);
+
+/* Looks for a specific set of chars inside a given string,
+ * returning its index */
+int			ft_strchars_i(const char *s, char *set);
 
 /* Looks for a given character in a string, reading it from back to front */
 char		*ft_strrchr(const char *s, int c);
