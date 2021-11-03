@@ -16,3 +16,4 @@ a.out
 .DS_Store
 tempCodeRunnerFile.c
 *.swp
+vgcore*
