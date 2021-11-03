@@ -6,7 +6,7 @@
 /*   By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 17:32:34 by aperez-b          #+#    #+#             */
-/*   Updated: 2021/11/03 21:45:36 by aperez-b         ###   ########.fr       */
+/*   Updated: 2021/11/04 00:03:36 by aperez-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -242,5 +242,8 @@ int			ft_between_chars(char *s, char *set, char char1, char char2);
 
 /* Splits string into matrix, separating needle accordingly */
 char		**ft_subsplit(char const *s, char *needle);
+
+/* Appends new row to a matrix */
+char		 **ft_extend_matrix(char **in, char *newstr);
 
 #endif

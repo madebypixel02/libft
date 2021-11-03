@@ -6,7 +6,7 @@
 #    By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/07 10:28:33 by aperez-b          #+#    #+#              #
-#    Updated: 2021/11/03 21:39:01 by aperez-b         ###   ########.fr        #
+#    Updated: 2021/11/04 00:07:56 by aperez-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,7 +79,8 @@ SRCA = ft_putnbr_base_fd.c ft_putstrn_fd.c		\
 	ft_free_matrix.c ft_dup_matrix.c			\
 	ft_strchr_i.c ft_putmatrix_fd.c				\
 	ft_matrixlen.c ft_strchars_i.c				\
-	ft_between_chars.c ft_subsplit.c
+	ft_between_chars.c ft_subsplit.c			\
+	ft_extend_matrix.c
 
 OBJ =	$(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
