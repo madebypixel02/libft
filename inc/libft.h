@@ -6,7 +6,7 @@
 /*   By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 17:32:34 by aperez-b          #+#    #+#             */
-/*   Updated: 2021/11/04 00:03:36 by aperez-b         ###   ########.fr       */
+/*   Updated: 2021/11/04 12:44:22 by aperez-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -222,7 +222,7 @@ int			ft_recursive_power(int nb, int power);
 /* Returns value of the euclidean distance between two points */
 int			ft_euclideandistance(t_vector src, t_vector dest);
 
-/* Creates a new t_vector with the given x and y parameters	 */
+/* Creates a new t_vector with the given x and y parameters */
 t_vector	ft_newvector(int x, int y);
 
 /* Frees all allocated memory from a matrix (array of arrays) */
@@ -240,10 +240,10 @@ int			ft_matrixlen(char **m);
 /* Returns 1 if any char in a set is surrounded by two other chars */
 int			ft_between_chars(char *s, char *set, char char1, char char2);
 
-/* Splits string into matrix, separating needle accordingly */
-char		**ft_subsplit(char const *s, char *needle);
+/* Splits string into matrix, separating chars in set accordingly */
+char		**ft_subsplit(char const *s, char *set);
 
 /* Appends new row to a matrix */
-char		 **ft_extend_matrix(char **in, char *newstr);
+char		**ft_extend_matrix(char **in, char *newstr);
 
 #endif

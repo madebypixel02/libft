@@ -6,52 +6,49 @@
 /*   By: aperez-b <aperez-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 18:23:56 by aperez-b          #+#    #+#             */
-/*   Updated: 2021/11/03 21:38:09 by aperez-b         ###   ########.fr       */
+/*   Updated: 2021/11/04 12:47:40 by aperez-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/libft.h"
 
-static int	ft_count_words(char *s, char *needle, int count)
+static int	ft_count_words(char *s, char *set, int count)
 {
-	char	*pos;
-	int		len;
+	int		pos;
 
-	len = ft_strlen(needle);
-	pos = ft_strnstr(s, needle, ft_strlen(s));
-	if (!pos && !count && s && s[0])
+	pos = ft_strchars_i(s, set);
+	if (pos == -1 && !count && s && s[0])
 		return (1);
-	if (!pos && !count && !s)
+	if (pos == -1 && !count && !s)
 		return (0);
 	if (!*s)
 		return (count);
-	if (!pos)
+	if (pos == -1)
 		return (count + 1);
-	if (pos != s)
+	if (&s[pos] != s)
 		count++;
 	count++;
-	return (ft_count_words(pos + len, needle, count));
+	return (ft_count_words(&s[pos + 1], set, count));
 }
 
-static char	**ft_fill_array(char **aux, int i, char *s, char *needle)
+static char	**ft_fill_array(char **aux, int i, char *s, char *set)
 {
-	char	*pos;
-	int		len[2];
+	int	pos;
+	int	len;
 
-	len[0] = ft_strlen(needle);
-	pos = ft_strnstr(s, needle, ft_strlen(s));
-	if (!pos && (!s || !s[0]))
+	pos = ft_strchars_i(s, set);
+	if (pos == -1 && (!s || !s[0]))
 		return (aux);
-	else if (!pos && s)
+	else if (pos == -1 && s)
 	{
 		aux[i++] = ft_strdup(s);
 		return (aux);
 	}
-	len[1] = ft_strlen(s) - ft_strlen(pos);
-	if (s != pos)
-		aux[i++] = ft_substr(s, 0, len[1]);
-	aux[i++] = ft_strdup(needle);
-	return (ft_fill_array(aux, i, pos + len[0], needle));
+	len = ft_strlen(s) - ft_strlen(&s[pos]);
+	if (s != &s[pos])
+		aux[i++] = ft_substr(s, 0, len);
+	aux[i++] = ft_substr(&s[pos], 0, 1);
+	return (ft_fill_array(aux, i, &s[pos + 1], set));
 }
 
 char	**ft_subsplit(char const *s, char *needle)
@@ -69,3 +66,15 @@ char	**ft_subsplit(char const *s, char *needle)
 	aux[nwords] = NULL;
 	return (aux);
 }
+
+/*int	main(void)
+{
+	char	*str;
+	char	**matrix;
+
+	str = "echo<a>a";
+	printf("Words: %d\n", ft_count_words(str, "<>", 0));
+	matrix = ft_subsplit(str, "<>");
+	ft_putmatrix_fd(matrix, 1);
+	ft_free_matrix(&matrix);
+}*/
