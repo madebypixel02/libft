@@ -6,7 +6,7 @@
 /*   By: aperez-b <aperez-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 18:23:56 by aperez-b          #+#    #+#             */
-/*   Updated: 2021/11/04 12:47:40 by aperez-b         ###   ########.fr       */
+/*   Updated: 2021/11/04 13:01:34 by aperez-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,15 +66,3 @@ char	**ft_subsplit(char const *s, char *needle)
 	aux[nwords] = NULL;
 	return (aux);
 }
-
-/*int	main(void)
-{
-	char	*str;
-	char	**matrix;
-
-	str = "echo<a>a";
-	printf("Words: %d\n", ft_count_words(str, "<>", 0));
-	matrix = ft_subsplit(str, "<>");
-	ft_putmatrix_fd(matrix, 1);
-	ft_free_matrix(&matrix);
-}*/
