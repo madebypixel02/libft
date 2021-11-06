@@ -6,7 +6,7 @@
 /*   By: aperez-b <aperez-b@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 19:51:21 by aperez-b          #+#    #+#             */
-/*   Updated: 2021/09/27 16:30:31 by aperez-b         ###   ########.fr       */
+/*   Updated: 2021/11/06 09:57:41 by aperez-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	ft_free_matrix(char ***m)
 		i++;
 	}
 	if (m)
+	{
 		free(m[0]);
-	m = NULL;
+		*m = NULL;
+	}
 }
