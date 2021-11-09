@@ -6,7 +6,7 @@
 /*   By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 17:32:34 by aperez-b          #+#    #+#             */
-/*   Updated: 2021/11/04 12:44:22 by aperez-b         ###   ########.fr       */
+/*   Updated: 2021/11/09 17:20:36 by aperez-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -245,5 +245,11 @@ char		**ft_subsplit(char const *s, char *set);
 
 /* Appends new row to a matrix */
 char		**ft_extend_matrix(char **in, char *newstr);
+
+/* Returns equivalent char ** from lst with char * as content */
+t_list		*ft_matrixtolst(char **matrix);
+
+/* Returns equivalent list with char * as content from char ** */
+char		**ft_lsttomatrix(t_list *lst);
 
 #endif
