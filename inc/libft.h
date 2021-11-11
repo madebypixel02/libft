@@ -6,7 +6,7 @@
 /*   By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 17:32:34 by aperez-b          #+#    #+#             */
-/*   Updated: 2021/11/09 17:20:36 by aperez-b         ###   ########.fr       */
+/*   Updated: 2021/11/11 18:46:50 by aperez-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -251,5 +251,8 @@ t_list		*ft_matrixtolst(char **matrix);
 
 /* Returns equivalent list with char * as content from char ** */
 char		**ft_lsttomatrix(t_list *lst);
+
+/* Replaces n-th line with another matrix */
+char		**ft_matrix_replace_in(char ***big, char **small, int n);
 
 #endif
