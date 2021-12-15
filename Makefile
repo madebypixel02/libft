@@ -6,7 +6,7 @@
 #    By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/07 10:28:33 by aperez-b          #+#    #+#              #
-#    Updated: 2021/11/11 18:47:16 by aperez-b         ###   ########.fr        #
+#    Updated: 2021/12/15 15:19:39 by aperez-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ MAGENTA = \033[0;95m
 CYAN = \033[0;96m
 WHITE = \033[0;97m
 
+SHELL=/bin/bash
 UNAME = $(shell uname -s)
 ECHO = echo
 ifeq ($(UNAME), Linux)
