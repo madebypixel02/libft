@@ -6,7 +6,7 @@
 #    By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/07 10:28:33 by aperez-b          #+#    #+#              #
-#    Updated: 2021/12/15 19:27:20 by aperez-b         ###   ########.fr        #
+#    Updated: 2021/12/15 19:46:05 by aperez-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,19 +96,19 @@ OBJA = $(addprefix $(OBJA_DIR)/, $(SRCA:.c=.o))
 # Progress vars
 SRC_COUNT_TOT := $(shell expr $(shell echo -n $(SRC) | wc -w) - $(shell ls -l $(OBJ_DIR) 2>&1 | grep ".o" | wc -l) + 1)
 ifeq ($(shell test $(SRC_COUNT_TOT) -lt 0; echo $$?),0)
-	SRC_COUNT_TOT := 1
+	SRC_COUNT_TOT := $(shell echo -n $(SRC) | wc -w)
 endif
 SRC_COUNT := 0
 SRC_PCT = $(shell expr 100 \* $(SRC_COUNT) / $(SRC_COUNT_TOT))
 SRCB_COUNT_TOT := $(shell expr $(shell echo -n $(SRCB) | wc -w) - $(shell ls -l $(OBJB_DIR) 2>&1 | grep ".o" | wc -l) + 1)
 ifeq ($(shell test $(SRCB_COUNT_TOT) -lt 0; echo $$?),0)
-	SRCB_COUNT_TOT := 1
+	SRCB_COUNT_TOT := $(shell echo -n $(SRCB) | wc -w)
 endif
 SRCB_COUNT := 0
 SRCB_PCT = $(shell expr 100 \* $(SRCB_COUNT) / $(SRCB_COUNT_TOT))
 SRCA_COUNT_TOT := $(shell expr $(shell echo -n $(SRCA) | wc -w) - $(shell ls -l $(OBJA_DIR) 2>&1 | grep ".o" | wc -l) + 1)
 ifeq ($(shell test $(SRCA_COUNT_TOT) -lt 0; echo $$?),0)
-	SRCA_COUNT_TOT := 1
+	SRCA_COUNT_TOT := $(shell echo -n $(SRCA) | wc -w)
 endif
 SRCA_COUNT := 0
 SRCA_PCT = $(shell expr 100 \* $(SRCA_COUNT) / $(SRCA_COUNT_TOT))
