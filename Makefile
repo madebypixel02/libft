@@ -6,7 +6,7 @@
 #    By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/07 10:28:33 by aperez-b          #+#    #+#              #
-#    Updated: 2021/12/15 18:12:51 by aperez-b         ###   ########.fr        #
+#    Updated: 2021/12/15 18:24:10 by aperez-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -111,21 +111,19 @@ $(NAME): create_dirs $(OBJ) bonus additional
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@$(eval SRC_COUNT = $(shell expr $(SRC_COUNT) + 1))
-	@printf "\r%100s\r[ %d/%d (%d%%) ] Compiling $(BLUE)$<$(DEFAULT)..." "" $(SRC_COUNT) $(SRC_COUNT_TOT) $(SRC_PCT)
+	@$(PRINTF) "\r%100s\r[ %d/%d (%d%%) ] Compiling $(BLUE)$<$(DEFAULT)..." "" $(SRC_COUNT) $(SRC_COUNT_TOT) $(SRC_PCT)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 bonus: create_dirs $(OBJ) $(OBJB)
 	@$(AR) $(NAME) $(OBJ) $(OBJB)
-	@$(PRINTF) "\r%100s\r"
 
 $(OBJB_DIR)/%.o: $(SRCB_DIR)/%.c
 	@$(eval SRCB_COUNT = $(shell expr $(SRCB_COUNT) + 1))
-	@printf "\r%100s\r[ %d/%d (%d%%) ] Compiling $(BLUE)$<$(DEFAULT)..." "" $(SRCB_COUNT) $(SRCB_COUNT_TOT) $(SRCB_PCT)
+	@$(PRINTF) "\r%100s\r[ %d/%d (%d%%) ] Compiling $(BLUE)$<$(DEFAULT)..." "" $(SRCB_COUNT) $(SRCB_COUNT_TOT) $(SRCB_PCT)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 additional: create_dirs $(OBJA)
 	@$(AR) $(NAME) $(OBJA)
-	@$(PRINTF) "\r%100s\r"
 
 $(OBJA_DIR)/%.o: $(SRCA_DIR)/%.c
 	@$(eval SRCA_COUNT = $(shell expr $(SRCA_COUNT) + 1))
