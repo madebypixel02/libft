@@ -6,7 +6,7 @@
 #    By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/07 10:28:33 by aperez-b          #+#    #+#              #
-#    Updated: 2021/12/15 15:19:39 by aperez-b         ###   ########.fr        #
+#    Updated: 2021/12/15 18:12:51 by aperez-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,10 +23,13 @@ WHITE = \033[0;97m
 
 SHELL=/bin/bash
 UNAME = $(shell uname -s)
-ECHO = echo
+PRINTF = echo
 ifeq ($(UNAME), Linux)
-	ECHO = echo -e
+	PRINTF = echo -e
 endif
+
+# Make variables
+PRINTF = LC_NUMERIC="en_US.UTF-8" printf
 CC = gcc -MD
 CFLAGS = -Wall -Wextra -Werror
 AR = ar rcs
@@ -84,46 +87,60 @@ SRCA = ft_putnbr_base_fd.c ft_putstrn_fd.c		\
 	ft_extend_matrix.c ft_matrixtolst.c			\
 	ft_lsttomatrix.c ft_matrix_replace_in.c
 
-OBJ =	$(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
+OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
 OBJB = $(addprefix $(OBJB_DIR)/, $(SRCB:.c=.o))
 
-OBJA =	$(addprefix $(OBJA_DIR)/, $(SRCA:.c=.o))
+OBJA = $(addprefix $(OBJA_DIR)/, $(SRCA:.c=.o))
+
+# Progress vars
+SRC_COUNT_TOT := $(shell expr $(shell echo -n $(SRC) | wc -w) - $(shell ls -l $(OBJ_DIR) 2>&1 | grep ".o" | wc -l) + 1)
+SRC_COUNT := 0
+SRC_PCT = $(shell expr 100 \* $(SRC_COUNT) / $(SRC_COUNT_TOT))
+SRCB_COUNT_TOT := $(shell expr $(shell echo -n $(SRCB) | wc -w) - $(shell ls -l $(OBJB_DIR) 2>&1 | grep ".o" | wc -l) + 1)
+SRCB_COUNT := 0
+SRCB_PCT = $(shell expr 100 \* $(SRCB_COUNT) / $(SRCB_COUNT_TOT))
+SRCA_COUNT_TOT := $(shell expr $(shell echo -n $(SRCA) | wc -w) - $(shell ls -l $(OBJA_DIR) 2>&1 | grep ".o" | wc -l) + 1)
+SRCA_COUNT := 0
+SRCA_PCT = $(shell expr 100 \* $(SRCA_COUNT) / $(SRCA_COUNT_TOT))
 
 all: $(NAME)
 
 $(NAME): create_dirs $(OBJ) bonus additional
-	@$(ECHO) "$(GREEN)$(BIN) is up to date!$(DEFAULT)"
+	@$(PRINTF) "\r%100s\r$(GREEN)$(BIN) is up to date!$(DEFAULT)\n"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@$(ECHO) "Compiling $(BLUE)$<$(DEFAULT)..."
+	@$(eval SRC_COUNT = $(shell expr $(SRC_COUNT) + 1))
+	@printf "\r%100s\r[ %d/%d (%d%%) ] Compiling $(BLUE)$<$(DEFAULT)..." "" $(SRC_COUNT) $(SRC_COUNT_TOT) $(SRC_PCT)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 bonus: create_dirs $(OBJ) $(OBJB)
 	@$(AR) $(NAME) $(OBJ) $(OBJB)
-	@$(ECHO) "$(MAGENTA)Bonus Compilation Complete in libft!$(DEFAULT)"
+	@$(PRINTF) "\r%100s\r"
 
 $(OBJB_DIR)/%.o: $(SRCB_DIR)/%.c
-	@$(ECHO) "Compiling $(BLUE)$<$(DEFAULT)..."
+	@$(eval SRCB_COUNT = $(shell expr $(SRCB_COUNT) + 1))
+	@printf "\r%100s\r[ %d/%d (%d%%) ] Compiling $(BLUE)$<$(DEFAULT)..." "" $(SRCB_COUNT) $(SRCB_COUNT_TOT) $(SRCB_PCT)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 additional: create_dirs $(OBJA)
 	@$(AR) $(NAME) $(OBJA)
-	@$(ECHO) "$(MAGENTA)Additional Functions Compilation Complete in libft!$(DEFAULT)"
+	@$(PRINTF) "\r%100s\r"
 
 $(OBJA_DIR)/%.o: $(SRCA_DIR)/%.c
-	@$(ECHO) "Compiling $(BLUE)$<$(DEFAULT)..."
+	@$(eval SRCA_COUNT = $(shell expr $(SRCA_COUNT) + 1))
+	@$(PRINTF) "\r%100s\r[ %d/%d (%d%%) ] Compiling $(BLUE)$<$(DEFAULT)..." "" $(SRCA_COUNT) $(SRCA_COUNT_TOT) $(SRCA_PCT)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	@$(ECHO) "$(CYAN)Cleaning up object files in libft...$(DEFAULT)"
+	@$(PRINTF) "$(CYAN)Cleaning up object files in libft...$(DEFAULT)\n"
 	@$(RM) -r $(OBJ_DIR)
 	@$(RM) -r $(OBJB_DIR)
 	@$(RM) -r $(OBJA_DIR)
 
 fclean: clean
 	@$(RM) -r $(BIN_DIR)
-	@$(ECHO) "$(CYAN)Removed $(NAME)$(DEFAULT)"
+	@$(PRINTF) "$(CYAN)Removed $(NAME)$(DEFAULT)\n"
 
 create_dirs:
 	@mkdir -p $(OBJ_DIR)
@@ -132,11 +149,11 @@ create_dirs:
 	@mkdir -p $(BIN_DIR)
 
 norminette:
-	@$(ECHO) "$(CYAN)\nChecking norm for libft...$(DEFAULT)"
+	@$(PRINTF) "$(CYAN)\nChecking norm for libft...$(DEFAULT)\n"
 	@norminette -R CheckForbiddenSourceHeader $(SRC_DIR) $(SRCB_DIR) $(SRCA_DIR) inc/libft.h
 
-re: fclean all
-	@$(ECHO) "$(YELLOW)Cleaned and Rebuilt Everything for libft!$(DEFAULT)"
+re: fclean
+	@make all
 git:
 	git add .
 	git commit
