@@ -161,6 +161,7 @@ norminette:
 
 re: fclean
 	@make all
+
 git:
 	git add .
 	git commit
