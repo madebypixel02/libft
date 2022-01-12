@@ -1,6 +1,10 @@
 # libft
 *Your very own first library :smile:*
 
+<p align="center">
+  <img src=https://user-images.githubusercontent.com/40824677/149224482-9a5f469c-4748-4dcb-8321-8eafd9a44715.png />
+</p>
+
 ### Table of Contents
 * [Introduction](#introduction)
 * [Function Overview](#function-overview)
