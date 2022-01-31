@@ -6,7 +6,7 @@
 /*   By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 17:02:52 by aperez-b          #+#    #+#             */
-/*   Updated: 2021/10/22 17:07:11 by aperez-b         ###   ########.fr       */
+/*   Updated: 2022/01/31 11:50:01 by aperez-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_putmatrix_fd(char **m, int fd)
 	i = 0;
 	while (m && m[i])
 	{
-		count += ft_putendl_fd(m[i], fd);
+		count += ft_putstr_fd(m[i], fd);
 		i++;
 	}
 	return (count);
