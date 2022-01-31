@@ -6,7 +6,7 @@
 /*   By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 17:32:34 by aperez-b          #+#    #+#             */
-/*   Updated: 2021/11/11 18:46:50 by aperez-b         ###   ########.fr       */
+/*   Updated: 2022/01/31 11:55:51 by aperez-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -231,8 +231,8 @@ void		ft_free_matrix(char ***m);
 /* Allocates and fully duplicates a matrix (array of arrays) */
 char		**ft_dup_matrix(char **m);
 
-/* Writes char ** to given fd */
-int			ft_putmatrix_fd(char **m, int fd);
+/* Writes char ** to given fd (prints \n per line in char ** if nl != 0) */
+int			ft_putmatrix_fd(char **m, int nl, int fd);
 
 /* Returns length of a matrix (char **) */
 int			ft_matrixlen(char **m);
