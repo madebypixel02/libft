@@ -1,4 +1,4 @@
-# libft
+# libft | 42Madrid
 *Your very own first library :smile:*
 
 <p align="center">
