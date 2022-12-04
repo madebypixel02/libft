@@ -112,8 +112,3 @@ make norminette		Checks Norm for all .c and .h files in the libft/ folder
 Really enjoyed this first project, can't wait for the next one :wink:
 
 May 4th, 2021
-
-<p align="center">
-  <a href="https://github.com/madebypixel02/42-Madrid-Cursus">&#127968;</a>
-  <a href="https://github.com/madebypixel02/ft_printf">&#10145;</a>
-</p>
