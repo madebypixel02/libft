@@ -83,7 +83,7 @@ Bonus functions to implement
 
 ## Additional Functions
 
-Besides ``mandatory`` and ``bonus`` functions, I also have a set of functions inside the ``srca/`` folder. These functions are not part of the ``libft`` subject but they will be useful in future projects. You can check their description in the [libft.h file](https://github.com/madebypixel02/libft/blob/master/inc/libft.h)
+Besides ``mandatory`` and ``bonus`` functions, I also have a set of functions inside the ``srca/`` folder. These functions are not part of the ``libft`` subject but they will be useful in future projects. You can check their description in the [libft.h file](https://gitlab.com/madebypixel02/libft/blob/master/inc/libft.h)
 
 ## Installation
 To test this library out, it's recommended that you have the following packages installed
@@ -93,7 +93,7 @@ gcc clang make python-norminette valgrind (linux)
 
 Clone the repository
 ```shell
-git clone https://github.com/madebypixel02/libft.git
+git clone https://gitlab.com/madebypixel02/libft.git
 cd libft
 make
 ```
