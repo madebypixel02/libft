@@ -6,7 +6,7 @@
 #    By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/07 10:28:33 by aperez-b          #+#    #+#              #
-#    Updated: 2021/12/15 19:46:05 by aperez-b         ###   ########.fr        #
+#    Updated: 2023/04/05 12:43:54 by aperez-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ ifeq ($(UNAME), Linux)
 endif
 
 # Make variables
-PRINTF = LC_NUMERIC="en_US.UTF-8" printf
+PRINTF = printf
 CC = gcc -MD
 CFLAGS = -Wall -Wextra -Werror
 AR = ar rcs
@@ -115,29 +115,32 @@ SRCA_PCT = $(shell expr 100 \* $(SRCA_COUNT) / $(SRCA_COUNT_TOT))
 
 all: $(NAME)
 
-$(NAME): create_dirs $(OBJ) bonus additional
+$(NAME): $(OBJ) $(OBJB) $(OBJA)
+	@mkdir -p $(BIN_DIR)
+	@$(AR) $(NAME) $^
 	@$(PRINTF) "\r%100s\r$(GREEN)$(BIN) is up to date!$(DEFAULT)\n"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(OBJ_DIR)
 	@$(eval SRC_COUNT = $(shell expr $(SRC_COUNT) + 1))
 	@$(PRINTF) "\r%100s\r[ %d/%d (%d%%) ] Compiling $(BLUE)$<$(DEFAULT)..." "" $(SRC_COUNT) $(SRC_COUNT_TOT) $(SRC_PCT)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-bonus: create_dirs $(OBJ) $(OBJB)
-	@$(AR) $(NAME) $(OBJ) $(OBJB)
-
 $(OBJB_DIR)/%.o: $(SRCB_DIR)/%.c
+	@mkdir -p $(OBJB_DIR)
 	@$(eval SRCB_COUNT = $(shell expr $(SRCB_COUNT) + 1))
 	@$(PRINTF) "\r%100s\r[ %d/%d (%d%%) ] Compiling $(BLUE)$<$(DEFAULT)..." "" $(SRCB_COUNT) $(SRCB_COUNT_TOT) $(SRCB_PCT)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-additional: create_dirs $(OBJA)
-	@$(AR) $(NAME) $(OBJA)
-
 $(OBJA_DIR)/%.o: $(SRCA_DIR)/%.c
+	@mkdir -p $(OBJA_DIR)
 	@$(eval SRCA_COUNT = $(shell expr $(SRCA_COUNT) + 1))
 	@$(PRINTF) "\r%100s\r[ %d/%d (%d%%) ] Compiling $(BLUE)$<$(DEFAULT)..." "" $(SRCA_COUNT) $(SRCA_COUNT_TOT) $(SRCA_PCT)
 	@$(CC) $(CFLAGS) -c $< -o $@
+
+bonus: all
+
+additional: all
 
 clean:
 	@$(PRINTF) "$(CYAN)Cleaning up object files in libft...$(DEFAULT)\n"
@@ -150,10 +153,6 @@ fclean: clean
 	@$(PRINTF) "$(CYAN)Removed $(NAME)$(DEFAULT)\n"
 
 create_dirs:
-	@mkdir -p $(OBJ_DIR)
-	@mkdir -p $(OBJB_DIR)
-	@mkdir -p $(OBJA_DIR)
-	@mkdir -p $(BIN_DIR)
 
 norminette:
 	@$(PRINTF) "$(CYAN)\nChecking norm for libft...$(DEFAULT)\n"
