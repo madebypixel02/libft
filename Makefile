@@ -6,7 +6,7 @@
 #    By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/07 10:28:33 by aperez-b          #+#    #+#              #
-#    Updated: 2023/04/05 12:43:54 by aperez-b         ###   ########.fr        #
+#    Updated: 2023/04/05 13:44:45 by aperez-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -115,32 +115,44 @@ SRCA_PCT = $(shell expr 100 \* $(SRCA_COUNT) / $(SRCA_COUNT_TOT))
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(OBJB) $(OBJA)
-	@mkdir -p $(BIN_DIR)
+$(NAME): $(OBJ) $(OBJB) $(OBJA) | $(BIN_DIR)
 	@$(AR) $(NAME) $^
 	@$(PRINTF) "\r%100s\r$(GREEN)$(BIN) is up to date!$(DEFAULT)\n"
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@mkdir -p $(OBJ_DIR)
+bonus: $(OBJB) | $(BIN_DIR)
+	@$(AR) $(NAME) $^
+	@$(PRINTF) "\r%100s\r$(MAGENTA)Bonus $(BIN) is up to date!$(DEFAULT)\n"
+
+additional: $(OBJA) | $(BIN_DIR)
+	@$(AR) $(NAME) $^
+	@$(PRINTF) "\r%100s\r$(YELLOW)Additional $(BIN) is up to date!$(DEFAULT)\n"
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 	@$(eval SRC_COUNT = $(shell expr $(SRC_COUNT) + 1))
 	@$(PRINTF) "\r%100s\r[ %d/%d (%d%%) ] Compiling $(BLUE)$<$(DEFAULT)..." "" $(SRC_COUNT) $(SRC_COUNT_TOT) $(SRC_PCT)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-$(OBJB_DIR)/%.o: $(SRCB_DIR)/%.c
-	@mkdir -p $(OBJB_DIR)
+$(OBJB_DIR)/%.o: $(SRCB_DIR)/%.c | $(OBJB_DIR)
 	@$(eval SRCB_COUNT = $(shell expr $(SRCB_COUNT) + 1))
-	@$(PRINTF) "\r%100s\r[ %d/%d (%d%%) ] Compiling $(BLUE)$<$(DEFAULT)..." "" $(SRCB_COUNT) $(SRCB_COUNT_TOT) $(SRCB_PCT)
+	@$(PRINTF) "\r%100s\r[ %d/%d (%d%%) ] Compiling $(MAGENTA)$<$(DEFAULT)..." "" $(SRCB_COUNT) $(SRCB_COUNT_TOT) $(SRCB_PCT)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-$(OBJA_DIR)/%.o: $(SRCA_DIR)/%.c
-	@mkdir -p $(OBJA_DIR)
+$(OBJA_DIR)/%.o: $(SRCA_DIR)/%.c | $(OBJA_DIR)
 	@$(eval SRCA_COUNT = $(shell expr $(SRCA_COUNT) + 1))
-	@$(PRINTF) "\r%100s\r[ %d/%d (%d%%) ] Compiling $(BLUE)$<$(DEFAULT)..." "" $(SRCA_COUNT) $(SRCA_COUNT_TOT) $(SRCA_PCT)
+	@$(PRINTF) "\r%100s\r[ %d/%d (%d%%) ] Compiling $(YELLOW)$<$(DEFAULT)..." "" $(SRCA_COUNT) $(SRCA_COUNT_TOT) $(SRCA_PCT)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-bonus: all
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
 
-additional: all
+$(OBJB_DIR):
+	@mkdir -p $(OBJB_DIR)
+
+$(OBJA_DIR):
+	@mkdir -p $(OBJA_DIR)
+
+$(BIN_DIR):
+	@mkdir -p $(BIN_DIR)
 
 clean:
 	@$(PRINTF) "$(CYAN)Cleaning up object files in libft...$(DEFAULT)\n"
@@ -170,4 +182,4 @@ git:
 -include $(OBJB_DIR)/*.d
 -include $(OBJA_DIR)/*.d
 
-.PHONY: all bonus additional clean fclean git norminette create_dirs re 
+.PHONY: all bonus additional clean fclean git norminette re 
